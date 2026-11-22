@@ -1,0 +1,15 @@
+{
+  "name": "@ades/business-static-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Dependency-free static multi-page engine reference for ADES Business.",
+  "engines": {
+    "node": ">=20 <21"
+  },
+  "scripts": {
+    "build": "node ./src/build.mjs",
+    "preview": "node ./src/preview.mjs",
+    "test": "node --test"
+  }
+}
