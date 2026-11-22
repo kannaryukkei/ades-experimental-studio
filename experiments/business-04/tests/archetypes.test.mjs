@@ -20,7 +20,7 @@ for (const site of archetypes) {
       assert.equal(result.sitemapEntries, site.pages.filter(page => page.indexable !== false).length);
       for (const page of site.pages) {
         const html = await fs.readFile(path.join(out, page.path === "/" ? "index.html" : page.path.slice(1) + "index.html"), "utf8");
-        assert.ok(html.includes(`<title>${page.title}</title>`), page.path);
+        assert.ok(html.includes(`<title>${escapeHtml(page.title)}</title>`), `${page.path}: title metadata missing or differs`);
         assert.ok(html.includes(`<meta name="description" content="${escapeHtml(page.description)}">`), `${page.path}: description metadata missing or differs`);
         assert.ok(html.includes(`<meta property="og:description" content="${escapeHtml(page.description)}">`), `${page.path}: Open Graph description missing or differs`);
         assert.match(html, /rel="canonical"/);
@@ -33,7 +33,7 @@ for (const site of archetypes) {
       for (const page of site.pages.filter(item => item.indexable === false)) {
         const file = path.join(out, page.path === "/" ? "index.html" : page.path.slice(1) + "index.html");
         assert.match(await fs.readFile(file, "utf8"), /noindex, nofollow/);
-        assert.doesNotMatch(sitemap, new URL(page.path, site.config.siteUrl).toString());
+        assert.ok(!sitemap.includes(new URL(page.path, site.config.siteUrl).toString()), `${page.path}: noindex route must not appear in sitemap`);
       }
       const robots = await fs.readFile(path.join(out, "robots.txt"), "utf8");
       assert.ok(robots.includes(new URL("/sitemap.xml", site.config.siteUrl).toString()));
