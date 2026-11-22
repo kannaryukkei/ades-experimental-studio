@@ -20,7 +20,7 @@ for (const site of archetypes) {
       assert.equal(result.sitemapEntries, site.pages.filter(page => page.indexable !== false).length);
       for (const page of site.pages) {
         const html = await fs.readFile(path.join(out, page.path === "/" ? "index.html" : page.path.slice(1) + "index.html"), "utf8");
-        assert.ok(html.includes(`<title>${page.title}</title>`), page.path);
+        assert.ok(html.includes(`<title>${escapeHtml(page.title)}</title>`), `${page.path}: title metadata missing or differs`);
         assert.ok(html.includes(`<meta name="description" content="${escapeHtml(page.description)}">`), `${page.path}: description metadata missing or differs`);
         assert.ok(html.includes(`<meta property="og:description" content="${escapeHtml(page.description)}">`), `${page.path}: Open Graph description missing or differs`);
         assert.match(html, /rel="canonical"/);
