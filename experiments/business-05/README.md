@@ -49,7 +49,7 @@ See DESIGN_DIRECTIONS.md for page hierarchy and RESOURCE_RESEARCH.md for third-p
 | Archetype-specific home hierarchy | Implemented in source |
 | Listing/detail task-oriented composition | Implemented in source |
 | Truthful static contact/inquiry wording | Implemented in source |
-| Route/build/metadata/sitemap/robots/404 automated checks | Passed: 8/8 tests on Node 20; Node 24 matrix rerun pending |
+| Route/build/metadata/sitemap/robots/404 automated checks | Passed: 8/8 tests on Node 20 and Node 24 |
 | Browser-tested key journeys | Not run |
 | 1440 / 768 / 390 viewport review | Not run |
 | Keyboard, focus, skip link and 200% zoom review | Not run |
