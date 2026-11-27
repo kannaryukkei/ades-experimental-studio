@@ -67,7 +67,7 @@ test("mobile navigation opens, closes with Escape and returns keyboard focus", a
   await expect(toggle).toBeFocused();
 
   await toggle.click();
-  await page.getByRole("link", { name: "Layanan" }).click();
+  await page.getByRole("navigation", { name: "Navigasi utama" }).getByRole("link", { name: "Layanan" }).click();
   await expect(page).toHaveURL(/#layanan$/);
   await expect(page.getByRole("navigation", { name: "Navigasi utama" })).toBeHidden();
 });
