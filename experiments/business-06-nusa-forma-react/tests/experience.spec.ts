@@ -7,6 +7,9 @@ const evidenceDirectory = fileURLToPath(new URL("../test-results/evidence/", imp
 
 test("homepage renders, image assets load and responsive widths do not overflow", async ({ page }) => {
   await mkdir(evidenceDirectory, { recursive: true });
+  // Capture evidence in reduced-motion mode so scroll-reveal content is visible
+  // in full-page screenshots without changing the normal-motion experience.
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await expect(page).toHaveTitle(/Nusa Forma Studio/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
