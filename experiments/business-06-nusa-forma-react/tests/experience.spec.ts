@@ -35,14 +35,35 @@ test("homepage renders, image assets load and responsive widths do not overflow"
 
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
-    const dimensions = await page.evaluate(() => ({
-      documentWidth: document.documentElement.scrollWidth,
-      viewportWidth: window.innerWidth,
-    }));
+    const diagnostics = await page.evaluate(() => {
+      const viewportWidth = window.innerWidth;
+      const offenders = Array.from(document.querySelectorAll("body *"))
+        .map((element) => {
+          const rect = element.getBoundingClientRect();
+          return {
+            tag: element.tagName.toLowerCase(),
+            className: typeof element.className === "string" ? element.className : "",
+            text: (element.textContent ?? "").trim().replace(/\\s+/g, " ").slice(0, 70),
+            left: Math.round(rect.left * 10) / 10,
+            right: Math.round(rect.right * 10) / 10,
+            width: Math.round(rect.width * 10) / 10,
+            scrollWidth: element.scrollWidth,
+            clientWidth: element.clientWidth,
+          };
+        })
+        .filter((item) => item.right > viewportWidth + 0.5 || item.left < -0.5)
+        .sort((a, b) => b.right - a.right)
+        .slice(0, 12);
+      return {
+        documentWidth: document.documentElement.scrollWidth,
+        viewportWidth,
+        offenders,
+      };
+    });
     expect(
-      dimensions.documentWidth,
-      `Unexpected horizontal overflow at ${width}px: ${JSON.stringify(dimensions)}`,
-    ).toBeLessThanOrEqual(dimensions.viewportWidth);
+      diagnostics.documentWidth,
+      `Unexpected horizontal overflow at ${width}px: ${JSON.stringify(diagnostics, null, 2)}`,
+    ).toBeLessThanOrEqual(diagnostics.viewportWidth);
 
     if ([1440, 768, 390].includes(width)) {
       await page.screenshot({
