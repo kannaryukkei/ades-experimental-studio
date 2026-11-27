@@ -50,10 +50,10 @@ See DESIGN_DIRECTIONS.md for page hierarchy and RESOURCE_RESEARCH.md for third-p
 | Listing/detail task-oriented composition | Implemented in source |
 | Truthful static contact/inquiry wording | Implemented in source |
 | Route/build/metadata/sitemap/robots/404 automated checks | Passed: 8/8 tests on Node 20 and Node 24 |
-| Browser-tested key journeys | Not run |
-| 1440 / 768 / 390 viewport review | Not run |
-| Keyboard, focus, skip link and 200% zoom review | Not run |
-| Before/after screenshots | Not captured |
+| Browser-tested key journeys | Passed in Chromium: 3/3 journeys; 21 desktop routes; 24 tablet/mobile checks |
+| 1440 / 768 / 390 viewport review | Automated overflow checks passed; manual visual review pending |
+| Keyboard, focus, skip link and 200% zoom review | Skip-link and reduced-motion checks passed; 200% zoom manual review pending |
+| Before/after screenshots | Chromium screenshots captured; baseline comparison not yet captured |
 | Production approval / ADES Core integration | Not approved |
 
 Do not mark visual QA complete from source inspection or automated tests alone. Record browser, operating system, viewports, issues and evidence in visual-qa/README.md.

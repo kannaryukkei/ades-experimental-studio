@@ -1,6 +1,6 @@
 # BUSINESS-05 — Visual QA & Experience Validation
 
-Status: **Not yet executed in a real browser.** Build and automated checks are separate from responsive and human experience review.
+Status: **Automated Chromium browser QA passed; manual design review remains pending.** Run: [GitHub Actions #14](https://github.com/kannaryukkei/ades-experimental-studio/actions/runs/46055513025).
 
 ## Build and preview
 
@@ -48,12 +48,24 @@ npm.cmd run preview -- product-catalog
 - [ ] Reduced-motion preference is respected.
 - [ ] Every route reviewed at desktop; representative routes at tablet and mobile.
 
+## Automated browser results
+
+- 21/21 routes returned HTTP 200 and exactly one H1 at desktop width (1440 px).
+- 24 representative tablet/mobile checks passed at 768 px and 390 px with no horizontal overflow.
+- All three end-to-end paths passed: corporate capabilities → project delivery → contact; advisory approach → services → strategy → contact; catalogue → collection → Field Kit → inquiry.
+- Keyboard first-focus skip link and reduced-motion behavior passed for all archetypes.
+- No uncaught browser page errors.
+- Browser: Chromium via Playwright 1.56.1, Node.js 24, Ubuntu 24.04.
+- 15 screenshots (desktop home and mobile representative pages) are captured and uploaded as the `business-05-browser-evidence` workflow artifact.
+
+This is automated smoke coverage, not a human visual design review or a formal accessibility audit. Contrast measurement, manual 200% zoom, detailed typography/composition review, and before/after comparison remain outstanding.
+
 ## Results record
 
 | Archetype | 1440px | 768px | 390px | 200% zoom | Keyboard | Result |
 |---|---|---|---|---|---|---|
-| Corporate | Not run | Not run | Not run | Not run | Not run | Pending |
-| Professional services | Not run | Not run | Not run | Not run | Not run | Pending |
-| Product/catalog | Not run | Not run | Not run | Not run | Not run | Pending |
+| Corporate | Automated pass | Automated pass | Automated pass | Pending manual | Skip link pass | Manual review pending |
+| Professional services | Automated pass | Automated pass | Automated pass | Pending manual | Skip link pass | Manual review pending |
+| Product/catalog | Automated pass | Automated pass | Automated pass | Pending manual | Skip link pass | Manual review pending |
 
 For every issue record: route, viewport, browser/version, reproduction steps, expected/actual result, severity and screenshot evidence. Passing automated tests does not establish accessibility conformance, conversion performance or production readiness.
