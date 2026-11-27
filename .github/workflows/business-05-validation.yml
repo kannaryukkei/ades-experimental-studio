@@ -36,6 +36,38 @@ jobs:
         working-directory: experiments/business-05
         run: npm test
 
+
+  baseline-qa:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install isolated browser QA dependency
+        working-directory: experiments/business-05
+        run: npm install --no-save playwright@1.56.1
+      - name: Install Chromium
+        working-directory: experiments/business-05
+        run: npx playwright install --with-deps chromium
+      - name: Build BUSINESS-04 baseline sites
+        working-directory: experiments/business-05
+        run: npm run baseline-browser-test -- --build-only
+      - name: Capture BUSINESS-04 baseline screenshots
+        working-directory: experiments/business-05
+        run: npm run baseline-browser-test
+      - name: Upload BUSINESS-04 baseline evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: business-04-baseline-evidence
+          path: experiments/business-05/.qa-baseline/
+          if-no-files-found: error
+          retention-days: 7
+          include-hidden-files: true
+
   browser-qa:
     runs-on: ubuntu-24.04
     steps:

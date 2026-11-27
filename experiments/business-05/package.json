@@ -10,6 +10,7 @@
     "build": "node ./scripts/build-all.mjs",
     "test": "node --test",
     "preview": "node ./scripts/preview.mjs",
-    "browser-test": "node ./scripts/browser-qa.mjs"
+    "browser-test": "node ./scripts/browser-qa.mjs",
+    "baseline-browser-test": "node ./scripts/baseline-qa.mjs"
   }
 }
