@@ -1,0 +1,12 @@
+{
+  "name": "ades-business-05-experiment",
+  "private": true,
+  "type": "module",
+  "description": "Archetype-specific experience redesign experiment for ADES Business.",
+  "engines": { "node": ">=20 <21" },
+  "scripts": {
+    "build": "node ./scripts/build-all.mjs",
+    "test": "node --test",
+    "preview": "node ./scripts/preview.mjs"
+  }
+}
