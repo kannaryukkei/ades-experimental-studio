@@ -159,7 +159,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 .process-section { padding-block: 110px 125px; background: var(--paper-soft); }
 .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 65px; border-top: 1px solid var(--line); }
-.process-card { position: relative; min-height: 265px; padding: 26px 23px 30px 0; border-bottom: 1px solid var(--line); }
+.process-card { position: relative; min-width: 0; min-height: 265px; padding: 26px 23px 30px 0; border-bottom: 1px solid var(--line); }
 .process-card:not(:first-child) { padding-left: 23px; border-left: 1px solid var(--line); }
 .process-number { color: var(--clay); font: 400 19px var(--serif); }
 .process-rule { display: block; width: 42px; height: 1px; margin: 34px 0 18px; background: var(--clay); transition: width .4s var(--ease); }
