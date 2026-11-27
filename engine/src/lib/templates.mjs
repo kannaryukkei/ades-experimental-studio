@@ -53,7 +53,7 @@ function specs(block) {
 function contact(block) {
   const details = (block.details || []).map(item => '<div class="contact-detail"><span>' + escapeHtml(item.label) + "</span>" + (item.href ? '<a href="' + escapeHtml(safeUrl(item.href)) + '">' + escapeHtml(item.value) + "</a>" : "<strong>" + escapeHtml(item.value) + "</strong>") + "</div>").join("");
   const action = block.action ? actionLink(block.action, true) : "";
-  return '<section class="contact-panel contact-panel--' + variant(block.variant) + '><div class="contact-panel__copy"><p class="eyebrow">' + escapeHtml(block.eyebrow || "") + "</p><h2>" + escapeHtml(block.heading || "") + "</h2>" + (block.text ? "<p>" + escapeHtml(block.text) + "</p>" : "") + (action ? '<div class="actions">' + action + "</div>" : "") + "</div>" + (details ? '<div class="contact-panel__details">' + details + "</div>" : "") + "</section>";
+  return '<section class="contact-panel contact-panel--' + variant(block.variant) + '><div class="contact-panel__copy"><p class="eyebrow">' + escapeHtml(block.eyebrow || "") + "</p><" + (block.level === "h1" ? "h1" : "h2") + ">" + escapeHtml(block.heading || "") + "</" + (block.level === "h1" ? "h1" : "h2") + ">" + (block.text ? "<p>" + escapeHtml(block.text) + "</p>" : "") + (action ? '<div class="actions">' + action + "</div>" : "") + "</div>" + (details ? '<div class="contact-panel__details">' + details + "</div>" : "") + "</section>";
 }
 function renderComposition(block) {
   switch (block.type) {
@@ -72,7 +72,7 @@ function renderSections(sections = []) {
   return sections.map(section => '<section class="content-section"><h2>' + escapeHtml(section.heading) + "</h2>" + (section.paragraphs || []).map(value => "<p>" + escapeHtml(value) + "</p>").join("") + "</section>").join("");
 }
 export function renderTemplate(page) {
-  if (Array.isArray(page.composition) && page.composition.length) return page.composition.map(renderComposition).join("\\n");
+  if (Array.isArray(page.composition) && page.composition.length) return page.composition.map(renderComposition).join("\n");
   const intro = page.intro ? '<p class="lede">' + escapeHtml(page.intro) + "</p>" : "";
   if (page.template === "home") return '<section class="hero"><p class="eyebrow">' + escapeHtml(page.eyebrow || "") + "</p><h1>" + escapeHtml(page.heading) + "</h1>" + intro + '<div class="actions"><a class="button" href="' + escapeHtml(safeUrl(page.primaryAction.href)) + '">' + escapeHtml(page.primaryAction.label) + '</a><a class="text-link" href="' + escapeHtml(safeUrl(page.secondaryAction.href)) + '">' + escapeHtml(page.secondaryAction.label) + "</a></div></section><section class=\"content-section\"><h2>How we can help</h2>" + renderCards(page.highlights) + "</section>";
   if (page.template === "listing") return '<header class="page-intro"><p class="eyebrow">' + escapeHtml(page.eyebrow || "") + "</p><h1>" + escapeHtml(page.heading) + "</h1>" + intro + "</header>" + renderCards(page.cards);

@@ -123,5 +123,5 @@ compose("/materials/", [
   { type: "story", heading: "Evidence before claims.", paragraphs: ["Every material claim on a real catalogue must be supported by verified supplier and product documentation.", "No certification, sustainability or sourcing claim is being made by this fictional example."] }
 ]);
 compose("/contact/", [
-  { type: "contact", variant: "catalog-contact", eyebrow: "Questions about an object", heading: "Let's talk about what you need.", text: "This catalogue supports inquiry links only. It does not implement carts, orders or payments.", details: [{ label: "Email", value: "studio@formfunction.example", href: "mailto:studio@formfunction.example" }, { label: "Studio", value: "Fictional design studio" }] }
+  { type: "contact", level: "h1", variant: "catalog-contact", eyebrow: "Questions about an object", heading: "Let's talk about what you need.", text: "This catalogue supports inquiry links only. It does not implement carts, orders or payments.", details: [{ label: "Email", value: "studio@formfunction.example", href: "mailto:studio@formfunction.example" }, { label: "Studio", value: "Fictional design studio" }] }
 ]);

@@ -120,7 +120,7 @@ compose("/industries/", [
   { type: "features", eyebrow: "Sector context", heading: "Different environments. Connected needs.", items: [{ number: "01", title: "Mobility", text: "Transport corridors, interchanges and supporting networks.", href: "/contact/", action: "Discuss a project" }, { number: "02", title: "Energy", text: "Infrastructure that supports dependable energy systems.", href: "/contact/", action: "Discuss a project" }, { number: "03", title: "Civic environments", text: "Places and public assets designed around their communities.", href: "/contact/", action: "Discuss a project" }] }
 ]);
 compose("/contact/", [
-  { type: "contact", eyebrow: "Make a connection", heading: "Start with the challenge.", text: "This is a static inquiry destination for the synthetic Meridian Infrastructure example; no form submissions are processed.", details: [{ label: "Email", value: "partnerships@meridian.example", href: "mailto:partnerships@meridian.example" }, { label: "Office", value: "Fictional regional office" }] }
+  { type: "contact", level: "h1", eyebrow: "Make a connection", heading: "Start with the challenge.", text: "This is a static inquiry destination for the synthetic Meridian Infrastructure example; no form submissions are processed.", details: [{ label: "Email", value: "partnerships@meridian.example", href: "mailto:partnerships@meridian.example" }, { label: "Office", value: "Fictional regional office" }] }
 ]);
 compose("/responsibility/", [
   { type: "hero", variant: "corporate-page", eyebrow: "Our commitments", heading: "Responsibility is part of delivery.", text: "A sample page for safety, resilience and responsible delivery. It is intentionally non-indexable." },
