@@ -1,6 +1,12 @@
 name: BUSINESS-05 validation
 
 on:
+  push:
+    branches: [experiment/business-05-archetype-redesign]
+    paths:
+      - ".github/workflows/business-05-validation.yml"
+      - "engine/src/lib/**"
+      - "experiments/business-05/**"
   pull_request:
     branches: [main]
     paths:
