@@ -10,6 +10,7 @@ const media = {
   kitchen: "https://images.unsplash.com/photo-1752254873720-833814859969?auto=format&fit=crop&w=1600&q=80",
   concrete: "https://images.unsplash.com/photo-1774516534141-fd68a4713366?auto=format&fit=crop&w=1600&q=80",
   living: "https://images.unsplash.com/photo-1772797583328-f83bc3f94f80?auto=format&fit=crop&w=1600&q=80",
+  material: "https://images.unsplash.com/photo-1757023177496-131ded651c01?auto=format&fit=crop&w=1600&q=80",
 };
 
 const projects = [
@@ -355,8 +356,6 @@ function InquiryComposer() {
 }
 
 function App() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <>
       <a href="#main" className="skip-link">Lewati ke konten</a>
@@ -432,7 +431,7 @@ function App() {
 
         <section className="material-section wrap" aria-labelledby="material-title">
           <div className="material-image">
-            <img src={media.living} alt="Referensi ruang dengan kombinasi kayu hangat, cahaya alami, dan tekstur lembut" loading="lazy" decoding="async" />
+            <img src={media.material} alt="Referensi ruang keluarga dengan batu alam, kayu, dan perapian" loading="lazy" decoding="async" />
             <span className="material-caption">MATERIAL STUDY / 04</span>
           </div>
           <div className="material-copy">
