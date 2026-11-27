@@ -157,7 +157,7 @@ function Header() {
   return (
     <header className={scrolled ? "site-header is-scrolled" : "site-header"}>
       <div className="header-inner">
-        <a href="#top" className="wordmark" aria-label="Nusa Forma Studio — kembali ke atas" onClick={closeMenu}>
+        <a href="#top" className="wordmark" onClick={closeMenu}>
           <span className="wordmark-name">nusa<span>forma</span></span>
           <span className="wordmark-sub">STUDIO / INTERIOR & RUANG</span>
         </a>
@@ -220,7 +220,7 @@ function ProjectGallery() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
           >
-            <a className="project-image" href="#inquiry" aria-label={`Siapkan kebutuhan ruang terinspirasi dari ${project.name}`}>
+            <a className="project-image" href="#inquiry" aria-label={`${project.number} — Lihat konsep ${project.name}`}>
               <img src={project.image} alt={project.alt} loading="lazy" decoding="async" style={{ objectPosition: project.position }} />
               <span className="image-index">{project.number}</span>
               <span className="project-open" aria-hidden="true"><ArrowUpRight /></span>
@@ -467,7 +467,6 @@ function App() {
                   <span className="process-rule" />
                   <h3>{title}</h3>
                   <p>{copy}</p>
-                  <span className="process-marker" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 </Reveal>
               ))}
             </div>

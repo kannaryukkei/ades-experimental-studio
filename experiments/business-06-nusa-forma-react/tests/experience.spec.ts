@@ -14,9 +14,21 @@ test("homepage renders, image assets load and responsive widths do not overflow"
 
   const images = page.locator("main img");
   await expect(images).toHaveCount(5);
-  await expect.poll(async () => images.evaluateAll((items) =>
-    items.filter((image) => image.complete && image.naturalWidth > 0).length,
-  ), { timeout: 20_000 }).toBe(5);
+  for (const image of await images.all()) {
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(async () => image.evaluate((node) => {
+      const element = node as HTMLImageElement;
+      return element.complete && element.naturalWidth > 0;
+    }), { timeout: 20_000 }).toBe(true);
+  }
+  const loadedImages = await images.evaluateAll((items) =>
+    items.map((image) => ({
+      src: (image as HTMLImageElement).currentSrc,
+      width: (image as HTMLImageElement).naturalWidth,
+    })),
+  );
+  expect(loadedImages.every((image) => image.width > 0), JSON.stringify(loadedImages)).toBe(true);
+  await page.evaluate(() => window.scrollTo(0, 0));
 
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
@@ -43,13 +55,15 @@ test("mobile navigation opens, closes with Escape and returns keyboard focus", a
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
 
-  const toggle = page.getByRole("button", { name: "Buka navigasi" });
+  const toggle = page.locator(".menu-toggle");
   await toggle.click();
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await expect(toggle).toHaveAccessibleName("Tutup navigasi");
   await expect(page.getByRole("navigation", { name: "Navigasi utama" })).toBeVisible();
 
   await page.keyboard.press("Escape");
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(toggle).toHaveAccessibleName("Buka navigasi");
   await expect(toggle).toBeFocused();
 
   await toggle.click();
@@ -85,7 +99,7 @@ test("inquiry builder validates required fields and creates an explicitly local 
   await expect(summary).toBeVisible();
   await expect(summary).toContainText("Surabaya");
   await expect(summary).toContainText("72 m²");
-  await expect(page.getByRole("status")).toContainText("Tidak ada data yang dikirim atau disimpan");
+  await expect(page.getByRole("status")).toContainText("Belum ada data yang dikirim atau disimpan");
   await expect(page.getByRole("button", { name: "Salin ringkasan" })).toBeVisible();
 
   await page.getByLabel(/Kebutuhan utama/).fill("Mengubah layout dapur.");

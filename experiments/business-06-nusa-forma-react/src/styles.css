@@ -12,9 +12,9 @@
   --ink: #21352c;
   --forest: #263d32;
   --forest-deep: #1d3028;
-  --clay: #a85f43;
+  --clay: #914b34;
   --clay-light: #d58b6a;
-  --muted: #626c63;
+  --muted: #566057;
   --line: rgba(35, 55, 44, .18);
   --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --ease: cubic-bezier(.22,.7,.18,1);
@@ -166,7 +166,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .process-card:hover .process-rule { width: 76px; }
 .process-card h3 { margin: 0 0 10px; font: 400 25px var(--serif); }
 .process-card p { max-width: 220px; margin: 0; color: var(--muted); font-size: 10px; line-height: 1.85; }
-.process-marker { position: absolute; right: 18px; bottom: 14px; color: rgba(38,61,50,.09); font: 400 58px var(--serif); pointer-events: none; }
 
 .faq-section { display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(3rem,8vw,8rem); padding-block: 125px; }
 .faq-heading h2 { max-width: 430px; }
