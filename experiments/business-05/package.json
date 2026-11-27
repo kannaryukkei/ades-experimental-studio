@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "description": "Archetype-specific experience redesign experiment for ADES Business.",
-  "engines": { "node": ">=20 <21" },
+  "engines": { "node": ">=20 <25" },
   "scripts": {
     "build": "node ./scripts/build-all.mjs",
     "test": "node --test",
