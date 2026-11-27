@@ -24,6 +24,7 @@ for (const site of archetypes) {
         assert.ok(html.includes('<meta name="description" content="' + escapeHtml(page.description) + '">'), page.path + ": description missing");
         assert.match(html, /rel="canonical"/);
         assert.match(html, /property="og:title"/);
+        assert.doesNotMatch(html, /\\b(?:class|aria-label)="[^"]*<[a-z][a-z0-9-]*(?:\\s|>)/i, page.path + ": malformed quoted attribute contains nested markup");
         assert.equal((html.match(/<h1\b/g) || []).length, 1, page.path + ": expected exactly one h1");
         if (page.composition) {
           assert.ok(html.includes("experience-hero") || html.includes("contact-panel"), page.path + ": composition not rendered");

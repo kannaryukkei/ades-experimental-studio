@@ -13,7 +13,7 @@ function heading(block, tag = "h2") {
 }
 function hero(block) {
   const aside = block.aside ? '<aside class="hero-note"><p class="eyebrow">' + escapeHtml(block.aside.eyebrow || "") + "</p><h2>" + escapeHtml(block.aside.title || "") + "</h2><p>" + escapeHtml(block.aside.text || "") + "</p></aside>" : "";
-  const visual = block.visual ? '<div class="hero-visual product-visual product-visual--' + variant(block.visual.variant) + '" role="img" aria-label="' + escapeHtml(block.visual.label || "Illustrative product image placeholder") + '><span class="product-visual__mark" aria-hidden="true"></span><span class="product-visual__label">' + escapeHtml(block.visual.note || "Product image placeholder") + "</span></div>" : "";
+  const visual = block.visual ? '<div class="hero-visual product-visual product-visual--' + variant(block.visual.variant) + '" role="img" aria-label="' + escapeHtml(block.visual.label || "Illustrative product image placeholder") + '"><span class="product-visual__mark" aria-hidden="true"></span><span class="product-visual__label">' + escapeHtml(block.visual.note || "Product image placeholder") + "</span></div>" : "";
   const actions = (block.actions || []).map(item => actionLink(item)).join("");
   return '<section class="experience-hero experience-hero--' + variant(block.variant) + '"><div class="experience-hero__main"><p class="eyebrow">' + escapeHtml(block.eyebrow || "") + "</p><h1>" + escapeHtml(block.heading || "") + "</h1>" + (block.text ? '<p class="lede">' + escapeHtml(block.text) + "</p>" : "") + '<div class="actions">' + actions + "</div></div>" + (aside || visual) + "</section>";
 }
@@ -27,7 +27,7 @@ function features(block) {
     const link = item.href ? '<a class="feature-link" href="' + escapeHtml(safeUrl(item.href)) + '">' + escapeHtml(item.action || "Explore") + ' <span aria-hidden="true">↗</span></a>' : "";
     return '<article class="feature-row"><span class="feature-number">' + escapeHtml(number) + '</span><div class="feature-copy"><h3>' + escapeHtml(item.title) + "</h3><p>" + escapeHtml(item.text) + "</p></div>" + link + "</article>";
   }).join("");
-  return '<section class="feature-section feature-section--' + variant(block.variant) + '><header class="section-heading">' + heading(block) + '</header><div class="feature-list">' + items + "</div></section>";
+  return '<section class="feature-section feature-section--' + variant(block.variant) + '"><header class="section-heading">' + heading(block) + '</header><div class="feature-list">' + items + "</div></section>";
 }
 function products(block) {
   const items = (block.items || []).map((item, index) => {
@@ -40,11 +40,11 @@ function products(block) {
 function story(block) {
   const paragraphs = (block.paragraphs || []).map(value => "<p>" + escapeHtml(value) + "</p>").join("");
   const action = actionLink(block.action);
-  return '<section class="story-block story-block--' + variant(block.variant) + '><div class="story-block__label">' + (block.eyebrow ? '<p class="eyebrow">' + escapeHtml(block.eyebrow) + "</p>" : "") + '</div><div class="story-block__content"><h2>' + escapeHtml(block.heading || "") + "</h2>" + paragraphs + (action ? '<div class="actions">' + action + "</div>" : "") + "</div></section>";
+  return '<section class="story-block story-block--' + variant(block.variant) + '"><div class="story-block__label">' + (block.eyebrow ? '<p class="eyebrow">' + escapeHtml(block.eyebrow) + "</p>" : "") + '</div><div class="story-block__content"><h2>' + escapeHtml(block.heading || "") + "</h2>" + paragraphs + (action ? '<div class="actions">' + action + "</div>" : "") + "</div></section>";
 }
 function steps(block) {
   const items = (block.items || []).map((item, index) => '<article class="step-item"><span class="step-number">' + String(index + 1).padStart(2, "0") + '</span><div><h3>' + escapeHtml(item.title) + "</h3><p>" + escapeHtml(item.text) + "</p></div></article>").join("");
-  return '<section class="steps-section steps-section--' + variant(block.variant) + '><header class="section-heading">' + heading(block) + '</header><div class="steps-grid">' + items + "</div></section>";
+  return '<section class="steps-section steps-section--' + variant(block.variant) + '"><header class="section-heading">' + heading(block) + '</header><div class="steps-grid">' + items + "</div></section>";
 }
 function specs(block) {
   const items = (block.items || []).map(item => '<div class="spec-row"><dt>' + escapeHtml(item.label) + "</dt><dd>" + escapeHtml(item.value) + "</dd></div>").join("");
@@ -53,7 +53,7 @@ function specs(block) {
 function contact(block) {
   const details = (block.details || []).map(item => '<div class="contact-detail"><span>' + escapeHtml(item.label) + "</span>" + (item.href ? '<a href="' + escapeHtml(safeUrl(item.href)) + '">' + escapeHtml(item.value) + "</a>" : "<strong>" + escapeHtml(item.value) + "</strong>") + "</div>").join("");
   const action = block.action ? actionLink(block.action, true) : "";
-  return '<section class="contact-panel contact-panel--' + variant(block.variant) + '><div class="contact-panel__copy"><p class="eyebrow">' + escapeHtml(block.eyebrow || "") + "</p><" + (block.level === "h1" ? "h1" : "h2") + ">" + escapeHtml(block.heading || "") + "</" + (block.level === "h1" ? "h1" : "h2") + ">" + (block.text ? "<p>" + escapeHtml(block.text) + "</p>" : "") + (action ? '<div class="actions">' + action + "</div>" : "") + "</div>" + (details ? '<div class="contact-panel__details">' + details + "</div>" : "") + "</section>";
+  return '<section class="contact-panel contact-panel--' + variant(block.variant) + '"><div class="contact-panel__copy"><p class="eyebrow">' + escapeHtml(block.eyebrow || "") + "</p><" + (block.level === "h1" ? "h1" : "h2") + ">" + escapeHtml(block.heading || "") + "</" + (block.level === "h1" ? "h1" : "h2") + ">" + (block.text ? "<p>" + escapeHtml(block.text) + "</p>" : "") + (action ? '<div class="actions">' + action + "</div>" : "") + "</div>" + (details ? '<div class="contact-panel__details">' + details + "</div>" : "") + "</section>";
 }
 function renderComposition(block) {
   switch (block.type) {
