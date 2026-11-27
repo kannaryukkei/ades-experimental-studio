@@ -35,3 +35,32 @@ jobs:
       - name: Run BUSINESS-05 tests
         working-directory: experiments/business-05
         run: npm test
+
+  browser-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install isolated browser QA dependency
+        working-directory: experiments/business-05
+        run: npm install --no-save playwright@1.56.1
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Build all BUSINESS-05 archetypes
+        working-directory: experiments/business-05
+        run: npm run build
+      - name: Run browser journeys and responsive checks
+        working-directory: experiments/business-05
+        run: npm run browser-test
+      - name: Upload visual QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: business-05-browser-evidence
+          path: experiments/business-05/.qa-screenshots/
+          if-no-files-found: ignore
+          retention-days: 7
