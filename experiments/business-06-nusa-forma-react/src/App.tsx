@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import {
-  ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Check, Copy,
+  ArrowDown, ArrowDownRight, ArrowUpRight, Check, Copy,
   Layers3, Menu, MoveUpRight, Ruler, X,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
