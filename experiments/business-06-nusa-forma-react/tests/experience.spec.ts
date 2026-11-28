@@ -103,7 +103,7 @@ test("project filter keeps the visible result count and aria-pressed in sync", a
   await expect(page.locator(".project-card")).toHaveCount(1);
   await expect(page.getByRole("button", { name: "Komersial" })).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator(".gallery-count strong")).toHaveText("01");
-  await page.getByRole("button", { name: "Semua" }).click();
+  await page.locator("#karya .filter-list").getByRole("button", { name: "Semua" }).click();
   await expect(page.locator(".project-card")).toHaveCount(3);
 
   const firstStudy = page.locator(".project-card").first();
