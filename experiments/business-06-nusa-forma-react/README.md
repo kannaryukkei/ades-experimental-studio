@@ -18,6 +18,7 @@ Other shells may use `npm` instead of `npm.cmd`.
 ## Experience and section architecture
 
 - Editorial brand system: warm paper, forest green, clay accent, serif display type and photographic compositions.
+- Readability pass: 16–18px desktop body scale, 14.5–16px compact-mobile body scale, stronger line-height and spacing, larger controls, and consistent metadata sizing.
 - Sticky responsive navigation with mobile menu, Escape handling, keyboard-focus return and scroll-reading progress.
 - Image-led hero and project index with category filtering.
 - Three editorial concept studies. Each explains the design question and offers an expandable spatial response, considerations and material notes.
@@ -34,10 +35,11 @@ CI runs:
 - Production-output assertions.
 - Playwright Chromium checks for image loading, layout widths (1440, 768, 390 and 320px), navigation, gallery disclosure/filter, material selection, service/process structure, FAQ filters/disclosure and inquiry composition.
 - axe-core scans tagged WCAG 2.1 A/AA and WCAG 2.2 AA.
+- Typography regression audit across 1440, 768, 390 and 320px: body copy ≥13.5px, controls ≥12px and metadata labels ≥9.5px.
 - Browser console/runtime checks.
 - Full-page screenshots at 1440, 768 and 390px.
 
-Latest successful run: https://github.com/kannaryukkei/ades-experimental-studio/actions/runs/46140309802
+Latest successful run (10/10 Chromium tests): https://github.com/kannaryukkei/ades-experimental-studio/actions/runs/46145735203
 
 ## Truth and rights
 
