@@ -1758,3 +1758,25 @@ body {
     line-height: 1.7;
   }
 }
+
+
+/* Supporting-study metadata previously inherited a 7px legacy mobile rule. */
+.story-support .project-meta {
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .story-support .project-meta {
+    font-size: 10px;
+    letter-spacing: .06em;
+  }
+}
+
+@media (max-width: 420px) {
+  .story-support .project-meta {
+    font-size: 9.5px;
+    letter-spacing: .045em;
+  }
+}
