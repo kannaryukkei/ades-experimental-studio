@@ -1872,3 +1872,14 @@ body {
 .process-checkpoint .micro-label {
   font-size: 11px;
 }
+
+
+/* Narrow-screen service detail and inquiry guidance retain body-copy sizing. */
+.service-output li,
+.faq-footnote,
+.inquiry-note p,
+.summary-placeholder,
+.inquiry-form label > span {
+  font-size: 14.5px;
+  line-height: 1.72;
+}
