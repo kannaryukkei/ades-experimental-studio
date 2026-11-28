@@ -213,3 +213,46 @@ test("browser console and page runtime stay free of errors", async ({ page }) =>
   expect(consoleErrors).toEqual([]);
   expect(pageErrors).toEqual([]);
 });
+
+
+test("typography preserves readable body, control and label sizes at desktop and mobile widths", async ({ page }) => {
+  await page.goto("/");
+  for (const width of [1440, 768, 390, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    const report = await page.evaluate(() => {
+      const visible = (element: Element) => {
+        const style = window.getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        return style.display !== "none" && style.visibility !== "hidden" &&
+          Number(style.opacity) > 0 && rect.width > 0 && rect.height > 0;
+      };
+      const inspect = (selector: string, minimum: number) =>
+        Array.from(document.querySelectorAll(selector))
+          .filter((element) => visible(element) && (element.textContent ?? "").trim().length > 0)
+          .map((element) => ({
+            selector,
+            text: (element.textContent ?? "").trim().replace(/\\s+/g, " ").slice(0, 72),
+            size: Number.parseFloat(window.getComputedStyle(element).fontSize),
+          }))
+          .filter((item) => item.size < minimum);
+      return {
+        bodyCopy: inspect(
+          "main p:not(.eyebrow), main li, .faq-item summary strong, .inquiry-form label > span",
+          13.5,
+        ),
+        controls: inspect(
+          ".nav-links > a, .button, .text-link, .filter-button, .faq-filter-button, .material-option, .service-link, .copy-button, .footer-nav > a, .footer-note > a",
+          12,
+        ),
+        labels: inspect(
+          ".eyebrow, .micro-label, .project-meta, .project-category, .gallery-count, .gallery-caption, .process-phase, .faq-category, .wordmark-sub, .hero-image-caption, .hero-bottomline, .footer-bottom, .material-index, .material-caption, .service-kicker",
+          9.5,
+        ),
+      };
+    });
+
+    expect(report.bodyCopy, `Body copy fell below 13.5px at ${width}px: ${JSON.stringify(report.bodyCopy)}`).toEqual([]);
+    expect(report.controls, `A control fell below 12px at ${width}px: ${JSON.stringify(report.controls)}`).toEqual([]);
+    expect(report.labels, `A label fell below 9.5px at ${width}px: ${JSON.stringify(report.labels)}`).toEqual([]);
+  }
+});
