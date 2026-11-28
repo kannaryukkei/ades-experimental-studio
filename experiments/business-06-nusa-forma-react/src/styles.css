@@ -1742,3 +1742,19 @@ body {
     font-size: 14.5px;
   }
 }
+
+
+/* Client-role checkpoint copy is essential process guidance, not a footnote. */
+@media (max-width: 760px) {
+  .process-step .process-checkpoint p {
+    font-size: 15px;
+    line-height: 1.72;
+  }
+}
+
+@media (max-width: 420px) {
+  .process-step .process-checkpoint p {
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+}
