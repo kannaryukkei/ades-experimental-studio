@@ -35,7 +35,7 @@ CI runs:
 - Production-output assertions.
 - Playwright Chromium checks for image loading, layout widths (1440, 768, 390 and 320px), navigation, gallery disclosure/filter, material selection, service/process structure, FAQ filters/disclosure and inquiry composition.
 - axe-core scans tagged WCAG 2.1 A/AA and WCAG 2.2 AA.
-- Typography regression audit across 1440, 768, 390 and 320px: body copy ≥13.5px, controls ≥12px and metadata labels ≥9.5px.
+- Typography regression audit across 1440, 768, 390 and 320px: body copy ≥13.5px, controls ≥12px and metadata labels ≥10px.
 - Browser console/runtime checks.
 - Full-page screenshots at 1440, 768 and 390px.
 
