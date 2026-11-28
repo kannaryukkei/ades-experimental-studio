@@ -1803,3 +1803,56 @@ body {
     font-size: 10.5px;
   }
 }
+
+
+/* BUSINESS-06 / VERIFIED LEGIBILITY FLOOR
+   Keep essential explanatory copy and supporting labels readable at every width.
+   These are minimums, not the visual type scale for every future project. */
+.service-boundary,
+.service-footnote,
+.material-copy .material-disclosure {
+  font-size: 14.5px;
+  line-height: 1.72;
+}
+
+.eyebrow,
+.micro-label,
+.project-meta,
+.project-category,
+.gallery-count,
+.gallery-caption,
+.process-phase,
+.faq-category,
+.faq-index-note p,
+.wordmark-sub,
+.hero-image-caption,
+.hero-bottomline,
+.footer-bottom,
+.material-index,
+.material-caption,
+.service-kicker,
+.story-support .project-meta {
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+  .hero .eyebrow,
+  .section-heading .eyebrow,
+  .faq-heading .eyebrow,
+  .inquiry-copy .eyebrow {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 420px) {
+  .project-meta,
+  .story-support .project-meta,
+  .wordmark-sub,
+  .hero-image-caption,
+  .hero-bottomline,
+  .footer-bottom,
+  .hero .eyebrow {
+    font-size: 11px;
+  }
+}
