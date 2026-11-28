@@ -105,6 +105,12 @@ test("project filter keeps the visible result count and aria-pressed in sync", a
   await expect(page.locator(".gallery-count strong")).toHaveText("01");
   await page.getByRole("button", { name: "Semua" }).click();
   await expect(page.locator(".project-card")).toHaveCount(3);
+
+  const firstStudy = page.locator(".project-card").first();
+  await firstStudy.locator(".project-more summary").click();
+  await expect(firstStudy.locator(".project-more")).toHaveAttribute("open", "");
+  await expect(firstStudy.locator(".project-detail")).toContainText("SPATIAL RESPONSE");
+  await expect(firstStudy.locator(".project-considerations li")).toHaveCount(3);
 });
 
 test("inquiry builder validates required fields and creates an explicitly local summary", async ({ page }) => {
@@ -131,15 +137,45 @@ test("inquiry builder validates required fields and creates an explicitly local 
   await expect(page.getByRole("status")).toContainText("Isian berubah");
 });
 
-test("FAQ disclosure is operable and only one answer is open", async ({ page }) => {
+test("FAQ topic filters and single-open disclosure stay in sync", async ({ page }) => {
   await page.goto("/");
   const items = page.locator(".faq-item");
-  await expect(items).toHaveCount(3);
+  await expect(items).toHaveCount(8);
+
   await items.nth(0).locator("summary").click();
   await expect(items.nth(0)).toHaveAttribute("open", "");
   await items.nth(1).locator("summary").click();
   await expect(items.nth(1)).toHaveAttribute("open", "");
   await expect(items.nth(0)).not.toHaveAttribute("open", "");
+
+  await page.getByRole("button", { name: "Pelaksanaan" }).click();
+  await expect(items).toHaveCount(2);
+  await expect(items.nth(0)).toContainText("kontraktor dan pembangunan");
+  await expect(page.getByRole("button", { name: "Pelaksanaan" })).toHaveAttribute("aria-pressed", "true");
+});
+
+test("material direction selector updates image, title and selected state", async ({ page }) => {
+  await page.goto("/");
+  const selector = page.getByRole("group", { name: "Pilih arah palet material" });
+  await expect(selector.getByRole("button")).toHaveCount(3);
+  await expect(page.locator(".palette-detail h3")).toHaveText("Kayu terang, tekstur lembut.");
+
+  await selector.getByRole("button", { name: /Mineral balance/ }).click();
+  await expect(selector.getByRole("button", { name: /Mineral balance/ })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator(".palette-detail h3")).toHaveText("Batu matte, garis yang tenang.");
+  await expect(page.locator(".palette-chip")).toHaveCount(3);
+
+  await selector.getByRole("button", { name: /Earth in layers/ }).click();
+  await expect(page.locator(".palette-detail h3")).toHaveText("Warna tanah, lapisan yang hidup.");
+});
+
+test("service architecture and process checkpoints expose clear scope information", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".service-card")).toHaveCount(3);
+  await expect(page.locator(".service-card").nth(0).locator(".service-output li")).toHaveCount(3);
+  await expect(page.locator(".process-step")).toHaveCount(4);
+  await expect(page.locator(".process-checkpoint")).toHaveCount(4);
+  await expect(page.locator(".process-step").nth(3)).toContainText("Rangkuman keputusan");
 });
 
 test("page has no axe-detected WCAG 2.1 A/AA or WCAG 2.2 AA violations", async ({ page }) => {

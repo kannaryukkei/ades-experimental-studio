@@ -24,6 +24,10 @@ const projects = [
     image: media.kitchen,
     alt: "Referensi ruang makan dan dapur terbuka dengan material kayu hangat",
     position: "center",
+    brief: "Area memasak, makan, dan duduk perlu terasa terhubung tanpa membuat seluruh aktivitas bertumpuk di satu ruang.",
+    response: "Zoning terbuka dengan batas visual ringan. Perbedaan tekstur, penyimpanan, dan arah pandang membantu tiap aktivitas tetap terbaca.",
+    considerations: ["Alur antar aktivitas", "Penyimpanan terintegrasi", "Cahaya dan sirkulasi"],
+    materials: ["Oak tone", "Linen", "Warm stone"],
   },
   {
     id: "commercial",
@@ -35,6 +39,10 @@ const projects = [
     image: media.concrete,
     alt: "Referensi interior kontemporer dengan dinding beton dan komposisi cahaya",
     position: "center",
+    brief: "Area duduk dan jalur layanan perlu terbaca pada ruang komersial yang kompak, tanpa membuat pergerakan pengunjung dan operasional saling mengganggu.",
+    response: "Pisahkan jalur operasional dan area pengunjung. Material yang konsisten menjaga karakter ruang tanpa menambah terlalu banyak elemen.",
+    considerations: ["Jalur layanan", "Area tunggu", "Pencahayaan fokus"],
+    materials: ["Concrete tone", "Dark timber", "Warm metal"],
   },
   {
     id: "residential",
@@ -46,49 +54,163 @@ const projects = [
     image: media.living,
     alt: "Referensi ruang keluarga dengan aksen kayu dan cahaya alami",
     position: "center",
+    brief: "Ruang keluarga membutuhkan area simpan dan area santai yang terasa lega, tanpa membuat bidang dinding dipenuhi furnitur terpisah.",
+    response: "Jadikan satu bidang penyimpanan sebagai jangkar visual. Palet dan tekstur menjaga ritme tanpa menambah banyak objek.",
+    considerations: ["Storage vertikal", "Tekstur natural", "Cahaya lembut"],
+    materials: ["Natural oak", "Textured fabric", "Muted clay"],
   },
 ];
 
 const services = [
   {
     number: "01",
+    kicker: "START WITH THE SPACE",
     title: "Konsultasi & perencanaan",
-    copy: "Membaca konteks, aktivitas, ukuran, dan prioritas sebelum keputusan desain dibuat.",
+    copy: "Mulai dari fungsi dan alur, bukan langsung memilih gaya visual. Kita petakan apa yang dibutuhkan ruang dan keputusan mana yang paling penting.",
+    deliverables: ["Ringkasan kebutuhan ruang", "Alur aktivitas dan zoning awal", "Prioritas serta batas lingkup pekerjaan"],
+    boundary: "Paling berguna saat brief masih belum terstruktur.",
     icon: <Ruler aria-hidden="true" />,
   },
   {
     number: "02",
+    kicker: "TURN IDE INTO DECISIONS",
     title: "Desain & dokumentasi",
-    copy: "Mengembangkan konsep, gambar kerja, pilihan material, dan visualisasi yang terarah.",
+    copy: "Terjemahkan brief menjadi arah visual dan keputusan desain yang bisa dibaca, ditinjau, lalu dikembangkan.",
+    deliverables: ["Arah visual dan palet material", "Pengembangan layout dan desain", "Gambar/detail sesuai lingkup yang disepakati"],
+    boundary: "Jenis dan kedalaman dokumen ditentukan bersama di awal.",
     icon: <Layers3 aria-hidden="true" />,
   },
   {
     number: "03",
+    kicker: "MADE FOR THE DIMENSION",
     title: "Furnitur custom",
-    copy: "Rancangan furnitur yang merespons dimensi ruang, kebutuhan penyimpanan, dan kebiasaan.",
+    copy: "Rancang elemen yang merespons ukuran ruang, kebutuhan penyimpanan, ergonomi, dan kebiasaan penggunanya.",
+    deliverables: ["Pemetaan fungsi dan dimensi", "Arah bentuk, material, dan hardware", "Detail rancangan serta spesifikasi"],
+    boundary: "Produksi dan pemasangan dibahas sebagai lingkup terpisah.",
     icon: <MoveUpRight aria-hidden="true" />,
   },
 ];
 
 const stages = [
-  ["01", "Memahami", "Membaca konteks ruang, kebiasaan, batas dan kebutuhan utama."],
-  ["02", "Merumuskan", "Menyusun prioritas, arah visual dan keputusan yang perlu disepakati."],
-  ["03", "Mengembangkan", "Menerjemahkan arah menjadi konsep, detail dan dokumentasi."],
-  ["04", "Menyepakati", "Menjelaskan lingkup lanjutan, koordinasi dan tanggung jawab."],
+  {
+    number: "01",
+    phase: "LISTEN / MAP",
+    title: "Memahami konteks",
+    copy: "Kondisi ruang, aktivitas, batas fisik, dan kebutuhan pengguna dibaca sebelum arah visual dipilih.",
+    output: "Ringkasan kebutuhan + peta prioritas",
+    involvement: "Menyediakan cerita penggunaan ruang, ukuran awal, foto, atau denah bila tersedia.",
+  },
+  {
+    number: "02",
+    phase: "FRAME / ALIGN",
+    title: "Merumuskan arah",
+    copy: "Temuan disusun menjadi prioritas, zoning, referensi visual, dan batas keputusan yang perlu disepakati.",
+    output: "Arah konsep + keputusan lingkup",
+    involvement: "Meninjau alternatif dan menyepakati arah yang akan dikembangkan.",
+  },
+  {
+    number: "03",
+    phase: "DESIGN / DETAIL",
+    title: "Mengembangkan desain",
+    copy: "Layout, proporsi, material, pencahayaan, dan detail dibangun saling berkaitan—bukan dipilih secara terpisah.",
+    output: "Paket desain sesuai lingkup",
+    involvement: "Memberi umpan balik pada checkpoint yang sudah ditetapkan.",
+  },
+  {
+    number: "04",
+    phase: "REVIEW / HANDOVER",
+    title: "Menutup keputusan",
+    copy: "Dokumen ditinjau, catatan terbuka dijelaskan, dan kebutuhan koordinasi berikutnya dipisahkan secara eksplisit.",
+    output: "Rangkuman keputusan + dokumen handover",
+    involvement: "Mengonfirmasi dokumen dan menyepakati langkah lanjutan bila diperlukan.",
+  },
 ];
 
 const faqs = [
   {
-    question: "Apakah Nusa Forma menangani pembangunan?",
-    answer: "Desain, dokumentasi, pengadaan furnitur, dan koordinasi pelaksanaan merupakan lingkup berbeda. Kebutuhan pelaksanaan perlu dibahas dan disepakati secara terpisah; desain tidak otomatis mencakup pekerjaan konstruksi.",
+    category: "Kebutuhan",
+    question: "Apa yang perlu disiapkan sebelum konsultasi pertama?",
+    answer: "Mulai dari jenis ruang, lokasi, ukuran perkiraan, kondisi saat ini, aktivitas yang berlangsung, dan hal yang paling ingin diperbaiki. Foto atau denah membantu, tetapi tidak harus sempurna.",
   },
   {
-    question: "Informasi apa yang perlu disiapkan sebelum konsultasi?",
-    answer: "Cukup mulai dari jenis ruang, lokasi, ukuran perkiraan, kondisi saat ini, kebutuhan utama, dan kisaran anggaran bila sudah tersedia. Foto atau denah akan membantu, tetapi tidak harus lengkap pada percakapan pertama.",
+    category: "Kebutuhan",
+    question: "Bisa mulai meski belum punya denah?",
+    answer: "Bisa. Ceritakan kondisi dan ukuran perkiraan terlebih dahulu. Denah, pengukuran ulang, atau survei dapat dibicarakan sebagai bagian lingkup jika memang dibutuhkan.",
   },
   {
-    question: "Apakah visual di halaman ini merupakan proyek yang sudah dibangun?",
-    answer: "Tidak. Halaman ini adalah demonstrasi fiktif. Foto yang digunakan merupakan referensi visual Unsplash, bukan dokumentasi proyek Nusa Forma, bukan hasil kerja klien, dan bukan bukti hasil terbangun.",
+    category: "Dokumen",
+    question: "Apa yang termasuk dalam paket desain?",
+    answer: "Jenis output mengikuti kebutuhan dan lingkup yang disepakati. Arah konsep, layout, visualisasi, gambar kerja, dan detail teknis bukan satu daftar otomatis untuk semua proyek.",
+  },
+  {
+    category: "Dokumen",
+    question: "Apakah visualisasi sama persis dengan hasil terbangun?",
+    answer: "Tidak selalu. Visualisasi membantu menjelaskan arah desain. Kondisi lapangan, ketersediaan material, metode pelaksanaan, dan keputusan saat pengerjaan dapat memengaruhi hasil akhir.",
+  },
+  {
+    category: "Pelaksanaan",
+    question: "Apakah desain sudah termasuk kontraktor dan pembangunan?",
+    answer: "Tidak otomatis. Desain, dokumentasi, pengadaan furnitur, koordinasi pelaksanaan, dan pekerjaan konstruksi memiliki tanggung jawab serta kebutuhan biaya yang berbeda.",
+  },
+  {
+    category: "Pelaksanaan",
+    question: "Bisa hanya memesan furnitur custom?",
+    answer: "Bisa dibahas sebagai kebutuhan tersendiri. Dimensi, fungsi, material, hardware, detail rancangan, proses produksi, dan pemasangan perlu ditentukan sesuai lingkupnya.",
+  },
+  {
+    category: "Demonstrasi",
+    question: "Apakah studi ruang di halaman ini proyek klien?",
+    answer: "Bukan. Nusa Forma adalah brand demonstrasi fiktif. Nama studi, narasi, dan komposisinya dibuat untuk menunjukkan pendekatan desain; foto merupakan referensi Unsplash, bukan dokumentasi proyek.",
+  },
+  {
+    category: "Demonstrasi",
+    question: "Apakah isian inquiry dikirim ke studio?",
+    answer: "Tidak pada demonstrasi ini. Form hanya menyusun ringkasan kebutuhan di browser agar bisa disalin. Tidak ada pengiriman, penyimpanan, atau backend yang terhubung.",
+  },
+];
+
+const materialPalettes = [
+  {
+    id: "natural",
+    number: "01 / 03",
+    name: "Natural warmth",
+    title: "Kayu terang, tekstur lembut.",
+    description: "Arah hangat yang mengandalkan serat kayu, tekstil bertekstur, dan permukaan batu bernuansa lembut. Cocok sebagai studi awal untuk ruang yang ingin terasa tenang tanpa kehilangan kedalaman.",
+    image: media.living,
+    alt: "Referensi ruang keluarga dengan kayu terang, tekstur lembut, dan cahaya alami",
+    chips: [
+      { label: "Oak", color: "#b18a61" },
+      { label: "Linen", color: "#ded5c2" },
+      { label: "Warm stone", color: "#a9a395" },
+    ],
+  },
+  {
+    id: "mineral",
+    number: "02 / 03",
+    name: "Mineral balance",
+    title: "Batu matte, garis yang tenang.",
+    description: "Permukaan mineral dan bidang yang lebih tegas membangun kontras yang tertata. Tekstur dijaga tetap terasa, sementara warna menjadi latar bagi bentuk dan cahaya.",
+    image: media.material,
+    alt: "Referensi interior dengan batu alam, kayu, dan perapian",
+    chips: [
+      { label: "Stone", color: "#8d8b82" },
+      { label: "Charcoal", color: "#3b403b" },
+      { label: "Dark oak", color: "#604832" },
+    ],
+  },
+  {
+    id: "earth",
+    number: "03 / 03",
+    name: "Earth in layers",
+    title: "Warna tanah, lapisan yang hidup.",
+    description: "Aksen terracotta dan serat alami memberi titik hangat. Kuncinya menjaga proporsi warna agar aksen terasa hadir tanpa mengambil alih seluruh ruang.",
+    image: media.kitchen,
+    alt: "Referensi ruang makan dan dapur terbuka dengan kayu hangat",
+    chips: [
+      { label: "Clay", color: "#a65b40" },
+      { label: "Walnut", color: "#725139" },
+      { label: "Woven", color: "#c5ad8d" },
+    ],
   },
 ];
 
@@ -195,8 +317,11 @@ function ProjectGallery() {
   return (
     <div className="gallery-wrap">
       <div className="gallery-controls" role="group" aria-label="Filter studi ruang">
-        <span className="gallery-count"><strong>{String(visible.length).padStart(2, "0")}</strong> STUDI</span>
-        <div className="filter-list">
+        <div className="gallery-counter">
+          <span className="gallery-count"><strong>{String(visible.length).padStart(2, "0")}</strong> STUDI TERPILIH</span>
+          <span className="gallery-caption">CONCEPT INDEX / 2026</span>
+        </div>
+        <div className="filter-list" aria-label="Filter kategori studi">
           {categories.map((category) => (
             <button
               type="button"
@@ -210,29 +335,167 @@ function ProjectGallery() {
           ))}
         </div>
       </div>
+
       <div className="project-grid">
-        {visible.map((project) => (
+        {visible.map((project, index) => (
           <motion.article
             layout
             key={project.number}
-            className={`project-card project-${project.number}`}
+            className={index === 0 ? "project-card story-feature" : "project-card story-support"}
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
           >
-            <a className="project-image" href="#inquiry" aria-label={`${project.number} — Lihat konsep ${project.name}`}>
+            <div className="project-visual">
               <img src={project.image} alt={project.alt} loading="lazy" decoding="async" style={{ objectPosition: project.position }} />
               <span className="image-index">{project.number}</span>
-              <span className="project-open" aria-hidden="true"><ArrowUpRight /></span>
-            </a>
-            <div className="project-meta"><span>{project.type}</span><span>{project.category.toUpperCase()}</span></div>
-            <h3>{project.name}</h3>
-            <p>{project.description}</p>
+              <span className="project-category">{project.category} / {project.type.split(" / ")[1]}</span>
+            </div>
+
+            <div className="project-story-copy">
+              <div className="project-meta"><span>{project.type}</span><span>STUDY {project.number}</span></div>
+              <h3>{project.name}</h3>
+              <p className="project-deck">{project.description}</p>
+
+              <div className="project-brief">
+                <span className="micro-label">THE DESIGN QUESTION</span>
+                <p>{project.brief}</p>
+              </div>
+
+              <details className="project-more">
+                <summary>
+                  <span>Baca arah desain</span>
+                  <ArrowDown size={15} aria-hidden="true" />
+                </summary>
+                <div className="project-detail">
+                  <span className="micro-label">SPATIAL RESPONSE</span>
+                  <p>{project.response}</p>
+                  <span className="micro-label">POINTS TO CONSIDER</span>
+                  <ul className="project-considerations">
+                    {project.considerations.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
+                  <div className="project-materials">
+                    {project.materials.map((item) => <span key={item}>{item}</span>)}
+                  </div>
+                </div>
+              </details>
+            </div>
           </motion.article>
         ))}
       </div>
-      <p className="visual-disclosure">Visual demonstrasi / foto referensi Unsplash. Bukan proyek klien, hasil terbangun, atau dokumentasi pekerjaan Nusa Forma.</p>
+
+      <div className="visual-disclosure">
+        <span className="disclosure-mark">NOTE / 01</span>
+        <p>Studi di atas adalah konsep demonstrasi, bukan proyek yang sudah dibangun. Foto merupakan referensi visual Unsplash dan tidak menggambarkan hasil kerja Nusa Forma.</p>
+      </div>
     </div>
+  );
+}
+
+function MaterialPalette() {
+  const [activePalette, setActivePalette] = useState("natural");
+  const active = materialPalettes.find((palette) => palette.id === activePalette) ?? materialPalettes[0];
+
+  return (
+    <section className="material-section" aria-labelledby="material-title">
+      <div className="wrap material-layout">
+        <div className="material-visual">
+          <img key={active.id} src={active.image} alt={active.alt} loading="lazy" decoding="async" />
+          <span className="material-index">{active.number}</span>
+          <span className="material-caption">MATERIAL DIRECTION / CONCEPTUAL</span>
+        </div>
+        <div className="material-copy">
+          <Reveal>
+            <p className="eyebrow">MATERIAL / DECISION LAB</p>
+            <h2 id="material-title">Material punya karakter. <em>Ruang punya kebutuhan.</em></h2>
+            <p className="material-intro">Palet bukan sekadar kumpulan warna. Ia perlu menjawab intensitas penggunaan, cahaya, perawatan, proporsi, dan suasana yang ingin dibangun.</p>
+          </Reveal>
+
+          <div className="material-picker" role="group" aria-label="Pilih arah palet material">
+            {materialPalettes.map((palette) => (
+              <button
+                type="button"
+                key={palette.id}
+                className={activePalette === palette.id ? "material-option is-active" : "material-option"}
+                aria-pressed={activePalette === palette.id}
+                onClick={() => setActivePalette(palette.id)}
+              >
+                <span className="material-option-number">{palette.number}</span>
+                <span>{palette.name}</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </button>
+            ))}
+          </div>
+
+          <div className="palette-detail" aria-live="polite">
+            <span className="micro-label">CURRENT DIRECTION / {active.number}</span>
+            <h3>{active.title}</h3>
+            <p>{active.description}</p>
+            <div className="palette-swatches">
+              {active.chips.map((chip) => (
+                <span className="palette-chip" key={chip.label}>
+                  <i style={{ backgroundColor: chip.color }} aria-hidden="true" />
+                  {chip.label}
+                </span>
+              ))}
+            </div>
+          </div>
+          <p className="material-disclosure">Palet dan gambar merupakan eksplorasi konsep, bukan daftar material yang dijamin tersedia atau spesifikasi final proyek.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQSection() {
+  const categories = ["Semua", "Kebutuhan", "Dokumen", "Pelaksanaan", "Demonstrasi"];
+  const [category, setCategory] = useState("Semua");
+  const visibleFaqs = faqs.filter((faq) => category === "Semua" || faq.category === category);
+
+  return (
+    <section className="faq-section wrap" aria-labelledby="faq-title">
+      <Reveal className="faq-heading">
+        <p className="eyebrow">SCOPE DESK / 06</p>
+        <h2 id="faq-title">Hal kecil yang perlu <em>jelas sejak awal.</em></h2>
+        <p className="faq-intro">Ruang lingkup yang terang membuat keputusan desain lebih mudah ditinjau—dan ekspektasi lebih mudah dijaga.</p>
+        <div className="faq-index-note">
+          <span>08</span>
+          <p>PERTANYAAN PRAKTIS<br />DIBAGI MENURUT TOPIK</p>
+        </div>
+      </Reveal>
+      <div className="faq-workspace">
+        <div className="faq-filter" role="group" aria-label="Filter pertanyaan">
+          {categories.map((item) => (
+            <button
+              type="button"
+              key={item}
+              className={category === item ? "faq-filter-button is-active" : "faq-filter-button"}
+              aria-pressed={category === item}
+              onClick={() => setCategory(item)}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+        <div className="faq-list" aria-live="polite">
+          {visibleFaqs.map((faq) => (
+            <details className="faq-item" key={faq.question} name="nusa-faq">
+              <summary>
+                <span className="faq-number">{String(faqs.indexOf(faq) + 1).padStart(2, "0")}</span>
+                <span className="faq-question-copy">
+                  <span className="faq-category">{faq.category}</span>
+                  <strong>{faq.question}</strong>
+                </span>
+                <i aria-hidden="true" />
+              </summary>
+              <div className="faq-answer"><p>{faq.answer}</p></div>
+            </details>
+          ))}
+          {visibleFaqs.length === 0 && <p className="faq-empty">Tidak ada pertanyaan pada kategori ini.</p>}
+        </div>
+        <p className="faq-footnote">Masih ada konteks yang berbeda? Catat dulu kebutuhannya di bagian inquiry—tanpa harus sudah punya semua jawabannya.</p>
+      </div>
+    </section>
   );
 }
 
@@ -398,9 +661,9 @@ function App() {
           <Reveal className="section-heading">
             <div>
               <p className="eyebrow">SELECTED CONCEPTS / 02</p>
-              <h2 id="projects-title">Ide yang berangkat<br />dari <em>kebutuhan nyata.</em></h2>
+              <h2 id="projects-title">Bukan hanya tampilan.<br /><em>Setiap ruang punya pertanyaan.</em></h2>
             </div>
-            <p className="section-side-copy">Tiga studi ruang demonstrasi. Setiap satu dimulai dari aktivitas, konteks, dan cara ruang perlu bekerja.</p>
+            <p className="section-side-copy">Baca brief, respons spasial, dan pertimbangan di balik tiap studi. Ketiganya adalah eksplorasi konseptual, bukan klaim proyek terbangun.</p>
           </Reveal>
           <ProjectGallery />
         </section>
@@ -409,84 +672,71 @@ function App() {
           <div className="wrap">
             <Reveal className="section-heading light-heading">
               <div>
-                <p className="eyebrow">WHAT WE DO / 03</p>
-                <h2 id="services-title">Ruang punya banyak lapisan.<br /><em>Lingkup kerja harus jelas.</em></h2>
+                <p className="eyebrow">SERVICE ARCHITECTURE / 03</p>
+                <h2 id="services-title">Mulai dari kebutuhan.<br /><em>Berhenti di lingkup yang jelas.</em></h2>
               </div>
-              <p className="section-side-copy">Desain, dokumentasi, produksi furnitur, dan koordinasi pelaksanaan bukan satu paket otomatis.</p>
+              <p className="section-side-copy">Pilih titik masuk yang sesuai. Output, kedalaman dokumen, dan tanggung jawab ditetapkan sebelum pekerjaan dimulai.</p>
             </Reveal>
-            <div className="service-list">
+            <div className="service-grid">
               {services.map((service, index) => (
-                <Reveal className="service-row" key={service.number} delay={index * 0.05}>
-                  <span className="service-number">{service.number}</span>
-                  <span className="service-icon">{service.icon}</span>
+                <Reveal className={index === 1 ? "service-card service-card-light" : "service-card"} key={service.number} delay={index * 0.05}>
+                  <div className="service-card-top">
+                    <span className="service-number">{service.number}</span>
+                    <span className="service-icon">{service.icon}</span>
+                  </div>
+                  <p className="service-kicker">{service.kicker}</p>
                   <h3>{service.title}</h3>
-                  <p>{service.copy}</p>
-                  <a href="#inquiry" aria-label={`Tanyakan tentang ${service.title}`}><ArrowUpRight aria-hidden="true" /></a>
+                  <p className="service-copy">{service.copy}</p>
+                  <div className="service-output">
+                    <span className="micro-label">POTENSI OUTPUT</span>
+                    <ul>
+                      {service.deliverables.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  </div>
+                  <p className="service-boundary">{service.boundary}</p>
+                  <a href="#inquiry" className="service-link">Bahas lingkup ini <ArrowUpRight size={15} aria-hidden="true" /></a>
                 </Reveal>
               ))}
             </div>
-            <p className="service-footnote">Koordinasi pelaksanaan dapat dibahas sebagai lingkup terpisah setelah kebutuhan, tanggung jawab, dan pihak terkait jelas.</p>
+            <p className="service-footnote">Produksi furnitur, kontraktor, pengadaan material, dan pekerjaan konstruksi tidak otomatis termasuk dalam lingkup desain.</p>
           </div>
         </section>
 
-        <section className="material-section wrap" aria-labelledby="material-title">
-          <div className="material-image">
-            <img src={media.material} alt="Referensi ruang keluarga dengan batu alam, kayu, dan perapian" loading="lazy" decoding="async" />
-            <span className="material-caption">MATERIAL STUDY / 04</span>
-          </div>
-          <div className="material-copy">
-            <Reveal>
-              <p className="eyebrow">OUR APPROACH / 04</p>
-              <h2 id="material-title">Detail yang baik dimulai dari <em>pertanyaan tepat.</em></h2>
-              <p>Material tidak dipilih hanya karena tampilannya. Cahaya, intensitas penggunaan, perawatan, ukuran, dan konteks menentukan apakah sebuah keputusan benar-benar tepat.</p>
-              <a href="#proses" className="text-link">Lihat bagaimana proses dibangun <ArrowRight size={15} aria-hidden="true" /></a>
-            </Reveal>
-            <div className="material-swatches" aria-label="Palet material konseptual">
-              <span className="swatch swatch-stone" title="Batu" />
-              <span className="swatch swatch-oak" title="Kayu" />
-              <span className="swatch swatch-clay" title="Tanah" />
-              <span className="swatch swatch-linen" title="Linen" />
-              <span className="swatch-caption">STONE / OAK / EARTH / LINEN</span>
-            </div>
-          </div>
-        </section>
+        <MaterialPalette />
 
         <section className="process-section" id="proses" aria-labelledby="process-title">
           <div className="wrap">
             <Reveal className="section-heading">
               <div>
-                <p className="eyebrow">HOW IT TAKES SHAPE / 05</p>
-                <h2 id="process-title">Jelas dari awal,<br /><em>bertahap dalam proses.</em></h2>
+                <p className="eyebrow">PROJECT LOGIC / 05</p>
+                <h2 id="process-title">Empat checkpoint.<br /><em>Tidak ada keputusan lompat.</em></h2>
               </div>
-              <p className="section-side-copy">Ruang yang baik lahir dari urutan keputusan yang bisa dipahami dan disepakati bersama.</p>
+              <p className="section-side-copy">Setiap tahap punya tujuan, keluaran, dan hal yang perlu disepakati sebelum berpindah ke tahap berikutnya.</p>
             </Reveal>
-            <div className="process-grid">
-              {stages.map(([number, title, copy], index) => (
-                <Reveal className="process-card" key={number} delay={index * 0.06}>
-                  <span className="process-number">{number}</span>
-                  <span className="process-rule" />
-                  <h3>{title}</h3>
-                  <p>{copy}</p>
+            <div className="process-track">
+              {stages.map((stage, index) => (
+                <Reveal className="process-step" key={stage.number} delay={index * 0.04}>
+                  <div className="process-step-index">
+                    <span>{stage.number}</span>
+                    <i aria-hidden="true" />
+                  </div>
+                  <div className="process-step-main">
+                    <span className="process-phase">{stage.phase}</span>
+                    <h3>{stage.title}</h3>
+                    <p>{stage.copy}</p>
+                  </div>
+                  <div className="process-checkpoint">
+                    <span className="micro-label">CHECKPOINT / OUTPUT</span>
+                    <strong>{stage.output}</strong>
+                    <p><b>Peran klien</b> — {stage.involvement}</p>
+                  </div>
                 </Reveal>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="faq-section wrap" aria-labelledby="faq-title">
-          <Reveal className="faq-heading">
-            <p className="eyebrow">BEFORE WE BEGIN / 06</p>
-            <h2 id="faq-title">Hal yang baik<br />untuk <em>dibicarakan.</em></h2>
-          </Reveal>
-          <div className="faq-list">
-            {faqs.map((faq, index) => (
-              <details className="faq-item" key={faq.question} name="nusa-faq">
-                <summary><span>0{index + 1}</span><strong>{faq.question}</strong><i aria-hidden="true" /></summary>
-                <div className="faq-answer"><p>{faq.answer}</p></div>
-              </details>
-            ))}
-          </div>
-        </section>
+        <FAQSection />
 
         <section className="inquiry-section" id="inquiry" aria-labelledby="inquiry-title">
           <div className="wrap"><InquiryComposer /></div>
