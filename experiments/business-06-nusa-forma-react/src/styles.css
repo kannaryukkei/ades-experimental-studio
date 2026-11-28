@@ -1780,3 +1780,26 @@ body {
     letter-spacing: .045em;
   }
 }
+
+
+/* Final micro-type calibration: even compact-screen metadata remains legible. */
+@media (max-width: 420px) {
+  .demo-note {
+    font-size: 10px;
+  }
+
+  .wordmark-sub,
+  .hero-image-caption,
+  .footer-bottom {
+    font-size: 10px;
+  }
+
+  .project-meta,
+  .story-support .project-meta {
+    font-size: 10px;
+  }
+
+  .faq-category {
+    font-size: 10.5px;
+  }
+}
