@@ -1656,3 +1656,61 @@ body {
     font-size: 9.5px;
   }
 }
+
+
+/* Specificity corrections for legacy selectors that predate the scale above. */
+.story-support .project-deck {
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.visual-disclosure p {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.material-copy .material-intro {
+  font-size: 15.5px;
+  line-height: 1.82;
+}
+
+.material-copy .palette-detail > p {
+  font-size: 15px;
+  line-height: 1.78;
+}
+
+.material-copy .material-disclosure {
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+
+@media (max-width: 760px) {
+  .story-support .project-deck,
+  .visual-disclosure p,
+  .material-copy .material-intro,
+  .material-copy .palette-detail > p {
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  .material-copy .material-disclosure {
+    font-size: 13.5px;
+  }
+}
+
+@media (max-width: 420px) {
+  .wordmark-sub {
+    font-size: 9.5px;
+  }
+
+  .story-support .project-deck,
+  .visual-disclosure p,
+  .material-copy .material-intro,
+  .material-copy .palette-detail > p {
+    font-size: 14.5px;
+  }
+
+  .material-copy .material-disclosure {
+    font-size: 13.5px;
+  }
+}
