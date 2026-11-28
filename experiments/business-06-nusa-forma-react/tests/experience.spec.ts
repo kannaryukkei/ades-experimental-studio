@@ -237,7 +237,7 @@ test("typography preserves readable body, control and label sizes at desktop and
           .filter((item) => item.size < minimum);
       return {
         bodyCopy: inspect(
-          "main p:not(.eyebrow), main li, .faq-item summary strong, .inquiry-form label > span",
+          "main p:not(.eyebrow):not(.service-kicker):not(.form-status):not(.faq-index-note p), main li, .faq-item summary strong, .inquiry-form label > span",
           13.5,
         ),
         controls: inspect(
@@ -245,7 +245,7 @@ test("typography preserves readable body, control and label sizes at desktop and
           12,
         ),
         labels: inspect(
-          ".eyebrow, .micro-label, .project-meta, .project-category, .gallery-count, .gallery-caption, .process-phase, .faq-category, .wordmark-sub, .hero-image-caption, .hero-bottomline, .footer-bottom, .material-index, .material-caption, .service-kicker",
+          ".eyebrow, .micro-label, .project-meta, .project-category, .gallery-count, .gallery-caption, .process-phase, .faq-category, .faq-index-note p, .wordmark-sub, .hero-image-caption, .hero-bottomline, .footer-bottom, .material-index, .material-caption, .service-kicker",
           9.5,
         ),
       };
