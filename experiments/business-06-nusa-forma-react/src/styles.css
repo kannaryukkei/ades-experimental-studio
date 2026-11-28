@@ -1856,3 +1856,13 @@ body {
     font-size: 11px;
   }
 }
+
+
+/* Filter controls are functional navigation between content states. */
+.faq-filter-button,
+.filter-button {
+  min-height: 44px;
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.4;
+}
