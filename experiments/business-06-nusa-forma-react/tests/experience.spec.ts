@@ -246,13 +246,13 @@ test("typography preserves readable body, control and label sizes at desktop and
         ),
         labels: inspect(
           ".eyebrow, .micro-label, .project-meta, .project-category, .gallery-count, .gallery-caption, .process-phase, .faq-category, .faq-index-note p, .wordmark-sub, .hero-image-caption, .hero-bottomline, .footer-bottom, .material-index, .material-caption, .service-kicker",
-          9.5,
+          10,
         ),
       };
     });
 
     expect(report.bodyCopy, `Body copy fell below 13.5px at ${width}px: ${JSON.stringify(report.bodyCopy)}`).toEqual([]);
     expect(report.controls, `A control fell below 12px at ${width}px: ${JSON.stringify(report.controls)}`).toEqual([]);
-    expect(report.labels, `A label fell below 9.5px at ${width}px: ${JSON.stringify(report.labels)}`).toEqual([]);
+    expect(report.labels, `A label fell below 10px at ${width}px: ${JSON.stringify(report.labels)}`).toEqual([]);
   }
 });
