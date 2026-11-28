@@ -1866,3 +1866,9 @@ body {
   font-size: 13px;
   line-height: 1.4;
 }
+
+
+/* Process checkpoint labels carry deliverable expectations, not decoration. */
+.process-checkpoint .micro-label {
+  font-size: 11px;
+}
