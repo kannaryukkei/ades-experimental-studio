@@ -238,21 +238,21 @@ test("typography preserves readable body, control and label sizes at desktop and
       return {
         bodyCopy: inspect(
           "main p:not(.eyebrow):not(.service-kicker):not(.form-status):not(.faq-index-note p), main li, .faq-item summary strong, .inquiry-form label > span",
-          13.5,
+          14,
         ),
         controls: inspect(
           ".nav-links > a, .button, .text-link, .filter-button, .faq-filter-button, .material-option, .service-link, .copy-button, .footer-nav > a, .footer-note > a",
-          12,
+          13,
         ),
         labels: inspect(
           ".eyebrow, .micro-label, .project-meta, .project-category, .gallery-count, .gallery-caption, .process-phase, .faq-category, .faq-index-note p, .wordmark-sub, .hero-image-caption, .hero-bottomline, .footer-bottom, .material-index, .material-caption, .service-kicker",
-          10,
+          11,
         ),
       };
     });
 
-    expect(report.bodyCopy, `Body copy fell below 13.5px at ${width}px: ${JSON.stringify(report.bodyCopy)}`).toEqual([]);
-    expect(report.controls, `A control fell below 12px at ${width}px: ${JSON.stringify(report.controls)}`).toEqual([]);
-    expect(report.labels, `A label fell below 10px at ${width}px: ${JSON.stringify(report.labels)}`).toEqual([]);
+    expect(report.bodyCopy, `Body copy fell below 14px at ${width}px: ${JSON.stringify(report.bodyCopy)}`).toEqual([]);
+    expect(report.controls, `A control fell below 13px at ${width}px: ${JSON.stringify(report.controls)}`).toEqual([]);
+    expect(report.labels, `A label fell below 11px at ${width}px: ${JSON.stringify(report.labels)}`).toEqual([]);
   }
 });
