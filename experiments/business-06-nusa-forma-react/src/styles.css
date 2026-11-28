@@ -1714,3 +1714,31 @@ body {
     font-size: 13.5px;
   }
 }
+
+
+/* Highest-specificity text corrections: the base material prose rule includes
+   :not(.eyebrow), so match that specificity rather than relying on order. */
+.material-copy > div > p.material-intro:not(.eyebrow) {
+  font-size: 15.5px;
+  line-height: 1.82;
+}
+
+.material-copy > .palette-detail > p:not(.eyebrow) {
+  font-size: 15px;
+  line-height: 1.78;
+}
+
+@media (max-width: 760px) {
+  .material-copy > div > p.material-intro:not(.eyebrow),
+  .material-copy > .palette-detail > p:not(.eyebrow) {
+    font-size: 15px;
+    line-height: 1.72;
+  }
+}
+
+@media (max-width: 420px) {
+  .material-copy > div > p.material-intro:not(.eyebrow),
+  .material-copy > .palette-detail > p:not(.eyebrow) {
+    font-size: 14.5px;
+  }
+}
